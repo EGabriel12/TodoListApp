@@ -5,8 +5,8 @@
 //  Created by Elias Gabriel on 24/07/22.
 //
 
-import Foundation
 import UIKit.UIColor
+import UIKit.UIImage
 
 
 struct TodoItemModel {
@@ -14,6 +14,12 @@ struct TodoItemModel {
     let title: String
     let isFavorite: Bool
     let dateCreated: Date
+}
+
+extension TodoItemModel {
+    var imageIsFavorite: UIImage? {
+        isFavorite ? UIImage.heartFill : UIImage.heart
+    }
 }
 
 enum TodoItemPriority: String, CaseIterable {

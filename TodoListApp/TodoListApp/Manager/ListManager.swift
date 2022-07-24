@@ -27,7 +27,15 @@ final class ListManager {
         }
     }
     
-    func getTodoItemsModel() -> [TodoItemModel] {
+    func getAllItemsByPriority() -> [[TodoItemModel]] {
+        TodoItemPriority.allCases.map { priority in
+            getAllItems().filter { model in
+                model.priority == priority
+            }
+        }
+    }
+    
+    func getAllItems() -> [TodoItemModel] {
         do {
             let model: [TodoItemModel?]  = try coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).map({ todoEntity in
                 if let title = todoEntity.title,

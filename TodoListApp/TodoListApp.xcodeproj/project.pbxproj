@@ -16,6 +16,10 @@
 		E557D551288DDB6700F93A87 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D550288DDB6700F93A87 /* CoreDataManager.swift */; };
 		E557D554288DDC1200F93A87 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D553288DDC1200F93A87 /* ListManager.swift */; };
 		E557D557288DE19D00F93A87 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D556288DE19D00F93A87 /* ListViewController.swift */; };
+		E557D55A288DE63500F93A87 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D559288DE63500F93A87 /* BaseView.swift */; };
+		E557D55C288DE68500F93A87 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D55B288DE68500F93A87 /* CustomView.swift */; };
+		E557D55E288DE71400F93A87 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D55D288DE71400F93A87 /* Images.swift */; };
+		E557D561288DE8A700F93A87 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D560288DE8A700F93A87 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		E557D550288DDB6700F93A87 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E557D553288DDC1200F93A87 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		E557D556288DE19D00F93A87 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E557D559288DE63500F93A87 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		E557D55B288DE68500F93A87 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		E557D55D288DE71400F93A87 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		E557D560288DE8A700F93A87 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,8 @@
 		E557D531288DD3BB00F93A87 /* TodoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				E557D55F288DE88D00F93A87 /* Views */,
+				E557D558288DE5E100F93A87 /* Commons */,
 				E557D552288DDBFC00F93A87 /* Manager */,
 				E557D54C288DDA0F00F93A87 /* CoreData */,
 				E557D546288DD54700F93A87 /* Models */,
@@ -122,6 +132,24 @@
 				E557D553288DDC1200F93A87 /* ListManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		E557D558288DE5E100F93A87 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				E557D559288DE63500F93A87 /* BaseView.swift */,
+				E557D55B288DE68500F93A87 /* CustomView.swift */,
+				E557D55D288DE71400F93A87 /* Images.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		E557D55F288DE88D00F93A87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E557D560288DE8A700F93A87 /* ListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,10 +225,14 @@
 				E557D551288DDB6700F93A87 /* CoreDataManager.swift in Sources */,
 				E557D54F288DDA3D00F93A87 /* TodoModel.xcdatamodeld in Sources */,
 				E557D54B288DD74900F93A87 /* TodoItemModel.swift in Sources */,
+				E557D55C288DE68500F93A87 /* CustomView.swift in Sources */,
 				E557D554288DDC1200F93A87 /* ListManager.swift in Sources */,
 				E557D533288DD3BB00F93A87 /* AppDelegate.swift in Sources */,
 				E557D557288DE19D00F93A87 /* ListViewController.swift in Sources */,
+				E557D55E288DE71400F93A87 /* Images.swift in Sources */,
+				E557D561288DE8A700F93A87 /* ListView.swift in Sources */,
 				E557D535288DD3BB00F93A87 /* SceneDelegate.swift in Sources */,
+				E557D55A288DE63500F93A87 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
