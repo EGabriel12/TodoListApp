@@ -22,6 +22,8 @@
 		E557D561288DE8A700F93A87 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D560288DE8A700F93A87 /* ListView.swift */; };
 		E557D563288E0C1400F93A87 /* AddNewTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D562288E0C1400F93A87 /* AddNewTodoView.swift */; };
 		E557D565288E15FD00F93A87 /* AddNewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D564288E15FD00F93A87 /* AddNewTodoViewController.swift */; };
+		E557D568288E26F700F93A87 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D567288E26F700F93A87 /* MainCoordinator.swift */; };
+		E557D56A288E272200F93A87 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D569288E272200F93A87 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		E557D560288DE8A700F93A87 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E557D562288E0C1400F93A87 /* AddNewTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTodoView.swift; sourceTree = "<group>"; };
 		E557D564288E15FD00F93A87 /* AddNewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTodoViewController.swift; sourceTree = "<group>"; };
+		E557D567288E26F700F93A87 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		E557D569288E272200F93A87 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		E557D531288DD3BB00F93A87 /* TodoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				E557D566288E26E000F93A87 /* Coordinator */,
 				E557D55F288DE88D00F93A87 /* Views */,
 				E557D558288DE5E100F93A87 /* Commons */,
 				E557D552288DDBFC00F93A87 /* Manager */,
@@ -158,6 +163,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E557D566288E26E000F93A87 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E557D567288E26F700F93A87 /* MainCoordinator.swift */,
+				E557D569288E272200F93A87 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,6 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E557D551288DDB6700F93A87 /* CoreDataManager.swift in Sources */,
+				E557D568288E26F700F93A87 /* MainCoordinator.swift in Sources */,
+				E557D56A288E272200F93A87 /* Coordinator.swift in Sources */,
 				E557D54F288DDA3D00F93A87 /* TodoModel.xcdatamodeld in Sources */,
 				E557D54B288DD74900F93A87 /* TodoItemModel.swift in Sources */,
 				E557D55C288DE68500F93A87 /* CustomView.swift in Sources */,

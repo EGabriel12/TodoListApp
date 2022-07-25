@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol ListViewControllerDelegate: AnyObject {
+    func routerToAddNewTodoViewController()
+}
+
 final class ListViewController: UIViewController {
     
+    weak var delegate: ListViewControllerDelegate?
     private let customView: ListViewConfiguration
     private let listManager: ListManager
     
@@ -43,8 +48,7 @@ final class ListViewController: UIViewController {
     
     private func addIncludeTodoButtonIntoNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { [self] _ in
-            let viewController = AddNewTodoViewController(listManager: listManager, customView: AddNewTodoView())
-            navigationController?.pushViewController(viewController, animated: true)
+            delegate?.routerToAddNewTodoViewController()
         }))
     }
 }

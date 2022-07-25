@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol AddNewTodoViewControllerDelegate: AnyObject {
+     func popViewController()
+}
+
 final class AddNewTodoViewController: UIViewController {
+    
+    weak var delegate: AddNewTodoViewControllerDelegate?
+    
     private let customView: AddNewTodoViewConfiguration
     private let listManager: ListManager
     
@@ -37,6 +44,6 @@ final class AddNewTodoViewController: UIViewController {
 extension AddNewTodoViewController: AddNewTodoViewDelegate {
     func didTouchUpSaveButton(item: TodoItemModel) {
         listManager.add(item)
-        navigationController?.popViewController(animated: true)
+        delegate?.popViewController()
     }
 }

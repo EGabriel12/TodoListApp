@@ -23,7 +23,7 @@ final class ListView: BaseView {
     
     // MARK: - UI
     private lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: TodoItemPriority.allCases.map({ $0.rawValue.capitalized }))
+        let control = UISegmentedControl(items: TodoItemPriority.allCases.map({ $0.title }))
         control.translatesAutoresizingMaskIntoConstraints = false
         control.selectedSegmentIndex = 1
         control.addAction(UIAction(handler: { [self] _ in updatedContentList() }), for: .valueChanged)
@@ -31,7 +31,7 @@ final class ListView: BaseView {
     }()
     
     private lazy var tableView: UITableView = {
-        let view = UITableView()
+        let view = UITableView(frame: .zero, style: .insetGrouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
