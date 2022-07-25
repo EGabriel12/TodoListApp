@@ -10,6 +10,7 @@ import UIKit
 class BaseView: UIView & CustomViewCodeProtocol {
     init() {
         super.init(frame: .zero)
+        commonInit()
     }
     
     required init?(coder: NSCoder) {

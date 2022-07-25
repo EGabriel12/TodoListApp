@@ -30,8 +30,21 @@ final class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
-        debugPrint(listManager.getAllItemsByPriority())
+        title = "Items"
+        addIncludeTodoButtonIntoNavigationItem()
         customView.setup(viewModel: listManager.getAllItemsByPriority())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        customView.setup(viewModel: listManager.getAllItemsByPriority())
+        customView.updatedContentList()
+    }
+    
+    private func addIncludeTodoButtonIntoNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { [self] _ in
+            let viewController = AddNewTodoViewController(listManager: listManager, customView: AddNewTodoView())
+            navigationController?.pushViewController(viewController, animated: true)
+        }))
     }
 }
