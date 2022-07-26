@@ -8,7 +8,6 @@
 import UIKit.UIColor
 import UIKit.UIImage
 
-
 struct TodoItemModel {
     let priority: TodoItemPriority
     let title: String

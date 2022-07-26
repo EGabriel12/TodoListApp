@@ -21,9 +21,20 @@ final class MainCoordinator: Coordinator {
         rootViewController.delegate = self
         navigationController.pushViewController(rootViewController, animated: true)
     }
+    
+    private func presentAlertController(title: String, message: String, primaryAction: UIAlertAction) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        alertController.addAction(primaryAction)
+        alertController.addAction(UIAlertAction.init(title: "Cancel", style: .cancel))
+        navigationController.topViewController?.present(alertController, animated: true)
+    }
 }
 
 extension MainCoordinator: ListViewControllerDelegate {
+    func showAlertController(title: String, message: String, primaryAction: UIAlertAction) {
+        presentAlertController(title: title, message: message, primaryAction: primaryAction)
+    }
+    
     func routerToAddNewTodoViewController() {
         let viewController = AddNewTodoViewController(listManager: listManager, customView: AddNewTodoView())
         viewController.delegate = self

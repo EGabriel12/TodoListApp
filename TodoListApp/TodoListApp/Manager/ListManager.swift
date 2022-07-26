@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 final class ListManager {
     let coreDataManager: CoreDataManager
@@ -53,6 +54,22 @@ final class ListManager {
         } catch let error {
             debugPrint("Error into get all entitys \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func delete(_ model: TodoItemModel) {
+        let item = try? coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).first { todoEntity in
+            todoEntity.dateCreated == model.dateCreated
+        }
+        do {
+            if let todoEntity = item {
+                coreDataManager.viewContext().delete(todoEntity)
+            }
+            try coreDataManager.viewContext().save()
+        }
+        
+        catch let error {
+            debugPrint("Error into delete entity \(error.localizedDescription)")
         }
     }
 }

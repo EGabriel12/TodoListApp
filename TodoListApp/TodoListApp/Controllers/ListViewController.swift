@@ -9,6 +9,7 @@ import UIKit
 
 protocol ListViewControllerDelegate: AnyObject {
     func routerToAddNewTodoViewController()
+    func showAlertController(title: String, message: String, primaryAction: UIAlertAction)
 }
 
 final class ListViewController: UIViewController {
@@ -36,19 +37,34 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Items"
+        customView.delegate = self
         addIncludeTodoButtonIntoNavigationItem()
         customView.setup(viewModel: listManager.getAllItemsByPriority())
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        customView.setup(viewModel: listManager.getAllItemsByPriority())
-        customView.updatedContentList()
+        reloadList()
     }
     
     private func addIncludeTodoButtonIntoNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: UIAction(handler: { [self] _ in
             delegate?.routerToAddNewTodoViewController()
         }))
+    }
+    
+    private func reloadList() {
+        customView.setup(viewModel: listManager.getAllItemsByPriority())
+        customView.updatedContentList()
+    }
+}
+
+extension ListViewController: ListViewDelegate {
+    func didSwipeToDeleteRow(item: TodoItemModel) {
+        delegate?.showAlertController(title: "Do you want to delete this item?", message: "After this operation, the item cannot be recovered", primaryAction: UIAlertAction.init(title: "Confirmar", style: .destructive, handler: { [self] _ in
+            listManager.delete(item)
+            reloadList()
+        }))
+        
     }
 }

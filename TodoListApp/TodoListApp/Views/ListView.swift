@@ -8,6 +8,8 @@
 import UIKit
 
 protocol ListViewConfiguration: UIView {
+    
+    var delegate: ListViewDelegate? { get set }
     var items: [[TodoItemModel]] { get }
     func numberOfRowsInSegment() -> Int
     func updatedContentList()
@@ -16,10 +18,15 @@ protocol ListViewConfiguration: UIView {
     func setup(viewModel: [[TodoItemModel]])
 }
 
+protocol ListViewDelegate: AnyObject {
+    func didSwipeToDeleteRow(item: TodoItemModel)
+}
+
 final class ListView: BaseView {
     
     // MARK: - Properties
     private (set) var items = [[TodoItemModel]]()
+    weak var delegate: ListViewDelegate?
     
     // MARK: - UI
     private lazy var segmentedControl: UISegmentedControl = {
@@ -91,8 +98,6 @@ extension ListView: ListViewConfiguration {
     func setup(viewModel: [[TodoItemModel]]) {
         items = viewModel
     }
-    
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -109,5 +114,13 @@ extension ListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ListView: UITableViewDelegate {
     // TODO - Edit a Todo Item
-    // TODO - Deleting a Todo Item
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            delegate?.didSwipeToDeleteRow(item: items[segmentedControl.selectedSegmentIndex][indexPath.item])
+//            items[segmentedControl.selectedSegmentIndex].remove(at: indexPath.item)
+//            updatedContentList()
+        }
+    }
 }
