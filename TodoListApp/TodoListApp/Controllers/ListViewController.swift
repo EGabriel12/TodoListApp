@@ -9,6 +9,7 @@ import UIKit
 
 protocol ListViewControllerDelegate: AnyObject {
     func routerToAddNewTodoViewController()
+    func routerToEditTodoViewController(todoItem: TodoItemModel)
     func showAlertController(title: String, message: String, primaryAction: UIAlertAction)
 }
 
@@ -60,6 +61,10 @@ final class ListViewController: UIViewController {
 }
 
 extension ListViewController: ListViewDelegate {
+    func didSelectToEditRow(item: TodoItemModel) {
+        delegate?.routerToEditTodoViewController(todoItem: item)
+    }
+    
     func didSwipeToDeleteRow(item: TodoItemModel) {
         delegate?.showAlertController(title: "Do you want to delete this item?", message: "After this operation, the item cannot be recovered", primaryAction: UIAlertAction.init(title: "Confirmar", style: .destructive, handler: { [self] _ in
             listManager.delete(item)

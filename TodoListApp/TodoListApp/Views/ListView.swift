@@ -20,6 +20,7 @@ protocol ListViewConfiguration: UIView {
 
 protocol ListViewDelegate: AnyObject {
     func didSwipeToDeleteRow(item: TodoItemModel)
+    func didSelectToEditRow(item: TodoItemModel)
 }
 
 final class ListView: BaseView {
@@ -114,6 +115,11 @@ extension ListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ListView: UITableViewDelegate {
     // TODO - Edit a Todo Item
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelectToEditRow(item: items[segmentedControl.selectedSegmentIndex][indexPath.item])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

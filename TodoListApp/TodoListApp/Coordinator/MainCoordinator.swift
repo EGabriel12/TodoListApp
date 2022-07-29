@@ -31,6 +31,11 @@ final class MainCoordinator: Coordinator {
 }
 
 extension MainCoordinator: ListViewControllerDelegate {
+    func routerToEditTodoViewController(todoItem: TodoItemModel) {
+        let viewController = EditTodoViewController(listManager: listManager, customView: EditTodoView(), todoItem: todoItem)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func showAlertController(title: String, message: String, primaryAction: UIAlertAction) {
         presentAlertController(title: title, message: message, primaryAction: primaryAction)
     }
