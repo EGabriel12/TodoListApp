@@ -136,6 +136,10 @@ final class EditTodoView: BaseView {
     
     func setup(viewModel: TodoItemModel) {
         self.todoItem = viewModel
+        setUIComponents(viewModel)
+    }
+    
+    func setUIComponents(_ viewModel: TodoItemModel) {
         titleTextField.text = viewModel.title
         priorityTextField.text = viewModel.priority.title
         priorityPickerView.selectRow(TodoItemPriority.allCases.firstIndex(where: { todoItemPriority in

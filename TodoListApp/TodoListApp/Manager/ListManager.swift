@@ -81,7 +81,7 @@ final class ListManager {
         do {
             if let todoEntity = item {
                 todoEntity.title = model.title
-                todoEntity.priority = model.priority.title
+                todoEntity.priority = model.priority.rawValue
                 todoEntity.isFavorite = model.isFavorite
             }
             try coreDataManager.viewContext().save()
