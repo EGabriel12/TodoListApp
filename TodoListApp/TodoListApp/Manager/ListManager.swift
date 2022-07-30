@@ -72,4 +72,21 @@ final class ListManager {
             debugPrint("Error into delete entity \(error.localizedDescription)")
         }
     }
+    
+    func update(_ model: TodoItemModel) {
+        let item: TodoEntity? = try? coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).first {
+            todoEntity in
+            todoEntity.dateCreated == model.dateCreated
+        }
+        do {
+            if let todoEntity = item {
+                todoEntity.title = model.title
+                todoEntity.priority = model.priority.title
+                todoEntity.isFavorite = model.isFavorite
+            }
+            try coreDataManager.viewContext().save()
+        } catch let error {
+            debugPrint("Error into update entity \(error.localizedDescription)")
+        }
+    }
 }

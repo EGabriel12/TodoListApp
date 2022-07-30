@@ -33,6 +33,7 @@ final class MainCoordinator: Coordinator {
 extension MainCoordinator: ListViewControllerDelegate {
     func routerToEditTodoViewController(todoItem: TodoItemModel) {
         let viewController = EditTodoViewController(listManager: listManager, customView: EditTodoView(), todoItem: todoItem)
+        viewController.delegate = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -52,3 +53,5 @@ extension MainCoordinator: AddNewTodoViewControllerDelegate {
         navigationController.popViewController(animated: true)
     }
 }
+
+extension MainCoordinator: EditTodoViewControllerDelegate {}

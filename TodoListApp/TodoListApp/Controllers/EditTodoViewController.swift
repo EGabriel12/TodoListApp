@@ -45,6 +45,7 @@ final class EditTodoViewController: UIViewController {
 
 extension EditTodoViewController: EditTodoViewDelegate {
     func didTouchUpSaveButton(item: TodoItemModel) {
-        
+        listManager.update(item)
+        delegate?.popViewController()
     }
 }

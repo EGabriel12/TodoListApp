@@ -94,7 +94,7 @@ final class EditTodoView: BaseView {
     }()
     
     private lazy var saveButton: UIButton = {
-        let button = UIButton(configuration: .bordered(), primaryAction: nil)
+        let button = UIButton(configuration: .bordered(), primaryAction: UIAction(handler: didTouchUpSaveButton(_:)))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Save", for: .normal)
         return button
@@ -128,11 +128,20 @@ final class EditTodoView: BaseView {
     }
     
     private func didTouchUpSaveButton(_ action: UIAction) -> Void {
-        
+        let itemModel = TodoItemModel(priority: TodoItemPriority.allCases.first(where: { priority in
+            priority.title == priorityTextField.text
+        })!, title: titleTextField.text!, isFavorite: isFavoriteSwitch.isOn, dateCreated: todoItem!.dateCreated)
+        delegate?.didTouchUpSaveButton(item: itemModel)
     }
     
     func setup(viewModel: TodoItemModel) {
         self.todoItem = viewModel
+        titleTextField.text = viewModel.title
+        priorityTextField.text = viewModel.priority.title
+        priorityPickerView.selectRow(TodoItemPriority.allCases.firstIndex(where: { todoItemPriority in
+            todoItemPriority.title == viewModel.priority.title
+        })!, inComponent: 0, animated: true)
+        isFavoriteSwitch.isOn = viewModel.isFavorite
     }
 }
 
