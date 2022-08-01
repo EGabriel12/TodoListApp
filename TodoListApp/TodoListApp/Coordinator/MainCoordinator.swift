@@ -9,7 +9,7 @@ import UIKit
 
 final class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
-    let listManager: ListManager
+    let listManager: ListManagerProtocol
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

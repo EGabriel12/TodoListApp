@@ -16,9 +16,9 @@ final class AddNewTodoViewController: UIViewController {
     weak var delegate: AddNewTodoViewControllerDelegate?
     
     private let customView: AddNewTodoViewConfiguration
-    private let listManager: ListManager
+    private let listManager: ListManagerProtocol
     
-    init(listManager: ListManager, customView: AddNewTodoViewConfiguration){
+    init(listManager: ListManagerProtocol, customView: AddNewTodoViewConfiguration){
         self.listManager = listManager
         self.customView = customView
         super.init(nibName: nil, bundle: nil)

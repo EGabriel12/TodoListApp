@@ -14,10 +14,10 @@ protocol EditTodoViewControllerDelegate: AnyObject {
 final class EditTodoViewController: UIViewController {
     weak var delegate: EditTodoViewControllerDelegate?
     private let customView: EditTodoViewConfiguration
-    private let listManager: ListManager
+    private let listManager: ListManagerProtocol
     private let todoItem: TodoItemModel
     
-    init(listManager: ListManager, customView: EditTodoViewConfiguration, todoItem: TodoItemModel) {
+    init(listManager: ListManagerProtocol, customView: EditTodoViewConfiguration, todoItem: TodoItemModel) {
         self.listManager = listManager
         self.customView = customView
         self.todoItem = todoItem

@@ -132,9 +132,7 @@ final class AddNewTodoView: BaseView {
 }
 
 // MARK: - ListViewConfiguration
- extension AddNewTodoView: AddNewTodoViewConfiguration {
-
- }
+extension AddNewTodoView: AddNewTodoViewConfiguration { }
 
 // MARK: - UIPickerViewDataSource
 extension AddNewTodoView: UIPickerViewDataSource {

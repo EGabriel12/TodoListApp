@@ -8,7 +8,15 @@
 import Foundation
 import CoreData
 
-final class ListManager {
+protocol ListManagerProtocol {
+    var coreDataManager: CoreDataManager { get }
+    func add(_ model: TodoItemModel)
+    func delete(_ model: TodoItemModel)
+    func update(_ model: TodoItemModel)
+    func getAllItemsByPriority() -> [[TodoItemModel]]
+}
+
+final class ListManager: ListManagerProtocol {
     let coreDataManager: CoreDataManager
     
     init(coreDataManager: CoreDataManager = .shared) {

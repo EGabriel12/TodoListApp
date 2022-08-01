@@ -17,9 +17,9 @@ final class ListViewController: UIViewController {
     
     weak var delegate: ListViewControllerDelegate?
     private let customView: ListViewConfiguration
-    private let listManager: ListManager
+    private let listManager: ListManagerProtocol
     
-    init(listManager: ListManager, customView: ListViewConfiguration){
+    init(listManager: ListManagerProtocol, customView: ListViewConfiguration){
         self.listManager = listManager
         self.customView = customView
         super.init(nibName: nil, bundle: nil)
