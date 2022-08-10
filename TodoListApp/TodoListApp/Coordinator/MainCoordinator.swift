@@ -10,13 +10,17 @@ import UIKit
 final class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     let listManager: ListManagerProtocol
+    let coreDataManager: CoreDataManagerProtocol
     
     init(navigationController: UINavigationController) {
+        self.coreDataManager = CoreDataManager(entityName: "TodoModel")
         self.navigationController = navigationController
-        self.listManager = ListManager()
+        self.listManager = ListManager(coreDataManager: coreDataManager)
     }
     
     func start() {
+        coreDataManager.loadPersistentStores()
+        
         let rootViewController = ListViewController(listManager: listManager, customView: ListView())
         rootViewController.delegate = self
         navigationController.pushViewController(rootViewController, animated: true)

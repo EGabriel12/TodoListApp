@@ -8,7 +8,7 @@
 import UIKit.UIColor
 import UIKit.UIImage
 
-struct TodoItemModel {
+struct TodoItemModel: Equatable {
     let priority: TodoItemPriority
     let title: String
     let isFavorite: Bool

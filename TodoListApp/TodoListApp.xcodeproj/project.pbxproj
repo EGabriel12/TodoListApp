@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E53D88D2289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88D1289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift */; };
+		E53D88D428A2D0B600EF83AC /* AddNewTodoViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88D328A2D0B600EF83AC /* AddNewTodoViewControllerDelegateSpy.swift */; };
+		E53D88D628A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88D528A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift */; };
 		E557D533288DD3BB00F93A87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D532288DD3BB00F93A87 /* AppDelegate.swift */; };
 		E557D535288DD3BB00F93A87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D534288DD3BB00F93A87 /* SceneDelegate.swift */; };
 		E557D53C288DD3BF00F93A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E557D53B288DD3BF00F93A87 /* Assets.xcassets */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E53D88D1289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
+		E53D88D328A2D0B600EF83AC /* AddNewTodoViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTodoViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
+		E53D88D528A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
 		E557D52F288DD3BB00F93A87 /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E557D532288DD3BB00F93A87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E557D534288DD3BB00F93A87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 			children = (
 				E5E5A75C289743C200A8491A /* ListViewControllerTests.swift */,
 				E5E5A75E289743DB00A8491A /* ListViewSpy.swift */,
+				E53D88D528A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift */,
 			);
 			path = ListViewController;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 			children = (
 				E5E5A762289750A000A8491A /* AddNewTodoViewControllerTests.swift */,
 				E5E5A764289750BA00A8491A /* AddNewTodoViewSpy.swift */,
+				E53D88D328A2D0B600EF83AC /* AddNewTodoViewControllerDelegateSpy.swift */,
 			);
 			path = AddNewTodoViewController;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 			children = (
 				E5E5A7672897588F00A8491A /* EditTodoViewControllerTests.swift */,
 				E5E5A769289758FE00A8491A /* EditTodoViewSpy.swift */,
+				E53D88D1289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift */,
 			);
 			path = EditTodoViewController;
 			sourceTree = "<group>";
@@ -382,10 +391,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53D88D428A2D0B600EF83AC /* AddNewTodoViewControllerDelegateSpy.swift in Sources */,
 				E5E5A7682897588F00A8491A /* EditTodoViewControllerTests.swift in Sources */,
 				E5E5A75F289743DB00A8491A /* ListViewSpy.swift in Sources */,
 				E5E5A76A289758FE00A8491A /* EditTodoViewSpy.swift in Sources */,
 				E5E5A765289750BA00A8491A /* AddNewTodoViewSpy.swift in Sources */,
+				E53D88D2289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift in Sources */,
+				E53D88D628A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift in Sources */,
 				E5E5A763289750A000A8491A /* AddNewTodoViewControllerTests.swift in Sources */,
 				E5E5A75D289743C200A8491A /* ListViewControllerTests.swift in Sources */,
 				E5E5A75528973F8200A8491A /* ListManagerSpy.swift in Sources */,

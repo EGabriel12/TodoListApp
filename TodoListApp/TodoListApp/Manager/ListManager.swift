@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 protocol ListManagerProtocol {
-    var coreDataManager: CoreDataManager { get }
+    var coreDataManager: CoreDataManagerProtocol { get }
     func add(_ model: TodoItemModel)
     func delete(_ model: TodoItemModel)
     func update(_ model: TodoItemModel)
@@ -17,20 +17,15 @@ protocol ListManagerProtocol {
 }
 
 final class ListManager: ListManagerProtocol {
-    let coreDataManager: CoreDataManager
+    let coreDataManager: CoreDataManagerProtocol
     
-    init(coreDataManager: CoreDataManager = .shared) {
+    init(coreDataManager: CoreDataManagerProtocol) {
         self.coreDataManager = coreDataManager
     }
     
     func add(_ model: TodoItemModel){
         do {
-            let entity = TodoEntity(context: coreDataManager.viewContext())
-            entity.title = model.title
-            entity.isFavorite = model.isFavorite
-            entity.priority = model.priority.rawValue
-            entity.dateCreated = model.dateCreated
-            try coreDataManager.viewContext().save()
+            try coreDataManager.save(model: model)
         } catch let error {
             debugPrint("Error into save entity \(error.localizedDescription)")
         }
@@ -46,19 +41,7 @@ final class ListManager: ListManagerProtocol {
     
     func getAllItems() -> [TodoItemModel] {
         do {
-            let model: [TodoItemModel?]  = try coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).map({ todoEntity in
-                if let title = todoEntity.title,
-                   let priorityRawValue = todoEntity.priority,
-                   let priority = TodoItemPriority(rawValue: priorityRawValue),
-                   let dateCreated = todoEntity.dateCreated {
-                    return TodoItemModel(priority: priority, title: title, isFavorite: todoEntity.isFavorite, dateCreated: dateCreated)
-                }
-                return nil
-            })
-            return model.compactMap({
-                $0
-            })
-            
+            return try coreDataManager.getAll()
         } catch let error {
             debugPrint("Error into get all entitys \(error.localizedDescription)")
             return []
@@ -66,33 +49,17 @@ final class ListManager: ListManagerProtocol {
     }
     
     func delete(_ model: TodoItemModel) {
-        let item = try? coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).first { todoEntity in
-            todoEntity.dateCreated == model.dateCreated
-        }
         do {
-            if let todoEntity = item {
-                coreDataManager.viewContext().delete(todoEntity)
-            }
-            try coreDataManager.viewContext().save()
+            try coreDataManager.delete(model: model)
         }
-        
         catch let error {
             debugPrint("Error into delete entity \(error.localizedDescription)")
         }
     }
     
     func update(_ model: TodoItemModel) {
-        let item: TodoEntity? = try? coreDataManager.viewContext().fetch(TodoEntity.fetchRequest()).first {
-            todoEntity in
-            todoEntity.dateCreated == model.dateCreated
-        }
         do {
-            if let todoEntity = item {
-                todoEntity.title = model.title
-                todoEntity.priority = model.priority.rawValue
-                todoEntity.isFavorite = model.isFavorite
-            }
-            try coreDataManager.viewContext().save()
+            try coreDataManager.update(model: model)
         } catch let error {
             debugPrint("Error into update entity \(error.localizedDescription)")
         }
