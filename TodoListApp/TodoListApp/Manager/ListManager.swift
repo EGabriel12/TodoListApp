@@ -10,9 +10,11 @@ import CoreData
 
 protocol ListManagerProtocol {
     var coreDataManager: CoreDataManagerProtocol { get }
-    func add(_ model: TodoItemModel)
     func delete(_ model: TodoItemModel)
     func update(_ model: TodoItemModel)
+    
+    @discardableResult
+    func add(_ model: TodoItemModel) -> Bool
     func getAllItemsByPriority() -> [[TodoItemModel]]
 }
 
@@ -23,11 +25,13 @@ final class ListManager: ListManagerProtocol {
         self.coreDataManager = coreDataManager
     }
     
-    func add(_ model: TodoItemModel){
+    func add(_ model: TodoItemModel) -> Bool {
         do {
             try coreDataManager.save(model: model)
+            return true
         } catch let error {
             debugPrint("Error into save entity \(error.localizedDescription)")
+            return false
         }
     }
     
