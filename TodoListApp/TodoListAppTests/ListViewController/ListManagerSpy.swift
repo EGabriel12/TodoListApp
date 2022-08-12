@@ -32,8 +32,15 @@ extension ListManagerSpy: ListManagerProtocol {
     
     func getAllItemsByPriority() -> [[TodoItemModel]] {
         getAllItemsByPriorityWasCalled = true
-        return [[]]
+        return [getAllItems()]
     }
     
-    
+    func getAllItems() -> [TodoItemModel] {
+        do {
+            return try coreDataManager.getAll()
+        } catch let error {
+            debugPrint("Error into get all entitys \(error.localizedDescription)")
+            return []
+        }
+    }
 }

@@ -15,7 +15,7 @@ final class CoreDataManagerSpy {
     var hasError: Bool = false
     var deleteStub: TodoItemModel?
     var updateStub: TodoItemModel?
-    var getAllStub: [TodoItemModel] = []
+    var getAllStub: [TodoItemModel]? = []
     var getAllItemsByPriorityWasCalled: Bool = false
     
     var loadPersistentStoresWasCalled: Bool = false
@@ -34,11 +34,21 @@ final class CoreDataManagerSpy {
 extension CoreDataManagerSpy: CoreDataManagerProtocol {
     func delete(model: TodoItemModel) throws {
         deleteWasCalled = true
-        deleteStub = model
+        if hasError {
+            deleteStub = nil
+            throw NSError(domain: "domain", code: -1200)
+        }
+        else {
+            deleteStub = model
+        }
     }
     
     func update(model: TodoItemModel) throws {
         updatedWasCalled = true
+        if hasError {
+            updateStub = nil
+            throw NSError(domain: "domain", code: -1200)
+        }
         updateStub = model
     }
     
@@ -54,8 +64,13 @@ extension CoreDataManagerSpy: CoreDataManagerProtocol {
     
     func getAll() throws -> [TodoItemModel] {
         getAllWasCalled = true
-        return getAllStub
-        
+        if hasError {
+            getAllStub = nil
+            throw NSError(domain: "domain", code: -1200)
+        }
+        else {
+            return getAllStub ?? []
+        }
     }
     
     func loadPersistentStores() -> Bool {

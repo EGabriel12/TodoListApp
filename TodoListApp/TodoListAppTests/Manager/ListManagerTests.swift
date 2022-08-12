@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 
 final class ListManagerTests: XCTestCase {
-    var sut: ListManager!
+    var sut: ListManagerProtocol!
     var coreDataManagerSpy: CoreDataManagerSpy!
     
     override func setUp() {
@@ -78,12 +78,86 @@ final class ListManagerTests: XCTestCase {
                 dateCreated: Date()
             )
         ]
-        
+
         coreDataManagerSpy.getAllStub = expectedItems
-        
+
         let resultItems = sut.getAllItemsByPriority()
-        
+
         XCTAssertTrue(coreDataManagerSpy.getAllWasCalled)
         XCTAssertEqual(resultItems.count, expectedItems.count)
+    }
+    
+    func testGetAllItemsByPriorityWithError() throws {
+        coreDataManagerSpy.hasError = true
+        
+        let resultItems = sut.getAllItemsByPriority()
+
+        XCTAssertTrue(coreDataManagerSpy.getAllWasCalled)
+        XCTAssertNil(coreDataManagerSpy.getAllStub)
+        XCTAssertEqual(resultItems.count, 3)
+    }
+    
+    func testDeleteItem() throws {
+        let model = TodoItemModel(
+            priority: TodoItemPriority.hard,
+            title: "Title",
+            isFavorite: true,
+            dateCreated: Date()
+        )
+        
+        let _ = sut.add(model)
+        
+        sut.delete(model)
+        
+        XCTAssertTrue(coreDataManagerSpy.deleteWasCalled)
+        XCTAssertEqual(coreDataManagerSpy.deleteStub, model)
+    }
+    
+    func testDeleteItemWithError() throws {
+        let model = TodoItemModel(
+            priority: TodoItemPriority.hard,
+            title: "Title",
+            isFavorite: true,
+            dateCreated: Date()
+        )
+        
+        let _ = sut.add(model)
+        
+        coreDataManagerSpy.hasError = true
+        
+        sut.delete(model)
+        
+        XCTAssertTrue(coreDataManagerSpy.deleteWasCalled)
+        XCTAssertNil(coreDataManagerSpy.deleteStub)
+    }
+    
+    func testUpdateItem() throws {
+        let updatedModel = TodoItemModel(
+            priority: TodoItemPriority.medium,
+            title: "Modified Title",
+            isFavorite: false,
+            dateCreated: Date.now
+        )
+                
+        sut.update(updatedModel)
+                
+        XCTAssertTrue(coreDataManagerSpy.updatedWasCalled)
+        XCTAssertEqual(coreDataManagerSpy.updateStub, updatedModel)
+    }
+    
+    func testUpdateItemWithError() throws {
+        let updatedModel = TodoItemModel(
+            priority: TodoItemPriority.medium,
+            title: "Modified Title",
+            isFavorite: false,
+            dateCreated: Date.now
+        )
+        
+        coreDataManagerSpy.hasError = true
+                
+        sut.update(updatedModel)
+                
+        XCTAssertTrue(coreDataManagerSpy.updatedWasCalled)
+        XCTAssertNil(coreDataManagerSpy.updateStub)
     }
 }
