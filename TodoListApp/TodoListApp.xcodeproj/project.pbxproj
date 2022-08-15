@@ -12,6 +12,9 @@
 		E53D88D628A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88D528A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift */; };
 		E53D88DC28A3422500EF83AC /* CoreDataManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88DB28A3422500EF83AC /* CoreDataManagerSpy.swift */; };
 		E53D88DE28A3430600EF83AC /* ListManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D88DD28A3430600EF83AC /* ListManagerTests.swift */; };
+		E53D890228A83FED00EF83AC /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D890128A83FED00EF83AC /* MockNavigationController.swift */; };
+		E53D890528A841A300EF83AC /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D890428A841A300EF83AC /* XCTestCase+Extension.swift */; };
+		E53D890828A842C500EF83AC /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D890728A842C500EF83AC /* MainCoordinatorTests.swift */; };
 		E557D533288DD3BB00F93A87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D532288DD3BB00F93A87 /* AppDelegate.swift */; };
 		E557D535288DD3BB00F93A87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557D534288DD3BB00F93A87 /* SceneDelegate.swift */; };
 		E557D53C288DD3BF00F93A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E557D53B288DD3BF00F93A87 /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		E53D88D528A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
 		E53D88DB28A3422500EF83AC /* CoreDataManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerSpy.swift; sourceTree = "<group>"; };
 		E53D88DD28A3430600EF83AC /* ListManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManagerTests.swift; sourceTree = "<group>"; };
+		E53D890128A83FED00EF83AC /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		E53D890428A841A300EF83AC /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		E53D890728A842C500EF83AC /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		E557D52F288DD3BB00F93A87 /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E557D532288DD3BB00F93A87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E557D534288DD3BB00F93A87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,30 @@
 				E53D88DD28A3430600EF83AC /* ListManagerTests.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		E53D88FF28A83FBB00EF83AC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E53D890128A83FED00EF83AC /* MockNavigationController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E53D890328A8418B00EF83AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E53D890428A841A300EF83AC /* XCTestCase+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E53D890628A8429F00EF83AC /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E53D890728A842C500EF83AC /* MainCoordinatorTests.swift */,
+			);
+			path = MainCoordinator;
 			sourceTree = "<group>";
 		};
 		E557D526288DD3BB00F93A87 = {
@@ -234,6 +264,9 @@
 		E5E5A75328973F8200A8491A /* TodoListAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				E53D890628A8429F00EF83AC /* MainCoordinator */,
+				E53D890328A8418B00EF83AC /* Extensions */,
+				E53D88FF28A83FBB00EF83AC /* Common */,
 				E53D88DA28A341AD00EF83AC /* Manager */,
 				E5E5A7662897585D00A8491A /* EditTodoViewController */,
 				E5E5A76028974F5900A8491A /* AddNewTodoViewController */,
@@ -401,6 +434,7 @@
 				E5E5A7682897588F00A8491A /* EditTodoViewControllerTests.swift in Sources */,
 				E5E5A75F289743DB00A8491A /* ListViewSpy.swift in Sources */,
 				E5E5A76A289758FE00A8491A /* EditTodoViewSpy.swift in Sources */,
+				E53D890228A83FED00EF83AC /* MockNavigationController.swift in Sources */,
 				E5E5A765289750BA00A8491A /* AddNewTodoViewSpy.swift in Sources */,
 				E53D88D2289C620000EF83AC /* EditTodoViewControllerDelegateSpy.swift in Sources */,
 				E53D88D628A2D99D00EF83AC /* ListViewControllerDelegateSpy.swift in Sources */,
@@ -408,7 +442,9 @@
 				E5E5A75D289743C200A8491A /* ListViewControllerTests.swift in Sources */,
 				E53D88DC28A3422500EF83AC /* CoreDataManagerSpy.swift in Sources */,
 				E5E5A75528973F8200A8491A /* ListManagerSpy.swift in Sources */,
+				E53D890528A841A300EF83AC /* XCTestCase+Extension.swift in Sources */,
 				E53D88DE28A3430600EF83AC /* ListManagerTests.swift in Sources */,
+				E53D890828A842C500EF83AC /* MainCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

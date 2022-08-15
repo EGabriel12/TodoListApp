@@ -22,8 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
-        coordinator = MainCoordinator(navigationController: rootViewController)
-        coordinator?.start()
+        startCoordinator(rootViewController)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -54,6 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    func startCoordinator(_ rootViewController: UINavigationController) {
+        coordinator = MainCoordinator(navigationController: rootViewController, coreDataManager: CoreDataManager(entityName: "TodoModel"))
+        coordinator?.start()
+    }
 }
 

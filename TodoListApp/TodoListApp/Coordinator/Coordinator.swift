@@ -9,6 +9,8 @@ import UIKit
 
 protocol Coordinator {
     var navigationController: UINavigationController { get }
-    init(navigationController: UINavigationController)
+    var listManager: ListManagerProtocol { get }
+    var coreDataManager: CoreDataManagerProtocol { get }
+    init(navigationController: UINavigationController, coreDataManager: CoreDataManagerProtocol)
     func start()
 }

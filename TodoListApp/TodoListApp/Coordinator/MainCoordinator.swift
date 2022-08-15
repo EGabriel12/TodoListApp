@@ -12,8 +12,8 @@ final class MainCoordinator: Coordinator {
     let listManager: ListManagerProtocol
     let coreDataManager: CoreDataManagerProtocol
     
-    init(navigationController: UINavigationController) {
-        self.coreDataManager = CoreDataManager(entityName: "TodoModel")
+    init(navigationController: UINavigationController, coreDataManager: CoreDataManagerProtocol) {
+        self.coreDataManager = coreDataManager
         self.navigationController = navigationController
         self.listManager = ListManager(coreDataManager: coreDataManager)
     }
@@ -30,7 +30,7 @@ final class MainCoordinator: Coordinator {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(primaryAction)
         alertController.addAction(UIAlertAction.init(title: "Cancel", style: .cancel))
-        navigationController.topViewController?.present(alertController, animated: true)
+        navigationController.present(alertController, animated: true)
     }
 }
 
